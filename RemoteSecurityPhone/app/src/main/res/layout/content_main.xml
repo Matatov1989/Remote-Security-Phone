@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/fon"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.sergeant_matatov.remotesecurityphone.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titleSendOn"
+                android:textColor="#000000"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/groupRadCommands"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="65dp">
+
+                <RadioButton
+                    android:id="@+id/radSoundOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rad_command"
+                    android:text="@string/commSoundOn" />
+
+                <RadioButton
+                    android:id="@+id/radGPSOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rad_command"
+                    android:text="@string/commGPSOn" />
+
+                <RadioButton
+                    android:id="@+id/radNotifOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rad_command"
+                    android:text="@string/commNotifOn" />
+
+                <RadioButton
+                    android:id="@+id/radBattery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rad_command"
+                    android:text="@string/commBattery" />
+
+                <RadioButton
+                    android:id="@+id/radNotifOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rad_command"
+                    android:text="@string/commNotifOff" />
+
+                <RadioButton
+                    android:id="@+id/radMyQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rad_command"
+                    android:text="@string/commMyQuestion" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editPassContact"
+                android:layout_width="265dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:hint="@string/hintPassContact"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editPhoneContact"
+                android:layout_width="265dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:hint="@string/hintFriend"
+                android:inputType="phone"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/textForBook"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnBook"
+                android:layout_width="265dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="@drawable/buttons"
+                android:text="@string/btnBook"
+                android:textColor="@color/white"
+                android:onClick="onClickBook" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="@drawable/buttons"
+                android:text="@string/btnSendComm"
+                android:textColor="@color/white"
+                android:onClick="onClickSend" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sergeant_matatov.remotesecurityphone">
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="23" />
+        android:targetSdkVersion="26" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -35,9 +35,9 @@
     <!-- вызовы -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <!--
-    экстренные вызовы
-    <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
-    -->
+        экстренные вызовы
+        <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
+        -->
     <!-- программной разблокировки -->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <!-- доступ к вибрации -->
@@ -47,9 +47,13 @@
     <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
     <uses-feature android:name="android.hardware.location.gps" />
 <!--
-    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-library android:name="com.google.android.maps" />
 -->
+
+    <!--
+        <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
@@ -111,16 +115,17 @@
             </intent-filter>
         </receiver>
 
+
+        <activity android:name="com.sergeant_matatov.remotesecurityphone.MapsActivity"></activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDVP-WidYSbDxaV8U5A9sy1BsbvRmlmACs" />
+            android:value="your key" />
 
-        <activity
-            android:name=".Maps"
-            android:label="@string/title_activity_maps" />
+
         <activity android:name=".PrivacyPolicy"></activity>
     </application>
 

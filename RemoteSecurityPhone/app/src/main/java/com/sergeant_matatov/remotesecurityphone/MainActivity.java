@@ -511,7 +511,7 @@ public class MainActivity extends AppCompatActivity
                         dialog.dismiss();
                         break;
                     case 1:
-                        intent.setData(Uri.parse("https://play.google.com/store/apps/developer?id=Yurka+Sergeant+Matatov"));
+                        intent.setData(Uri.parse("https://play.google.com/store/search?q=Yury%20Matatov&c=apps&hl"));
                         startActivity(intent);
                         dialog.dismiss();
                         break;
@@ -709,7 +709,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_local) {
-            startActivity(new Intent(MainActivity.this, Maps.class));
+            startActivity(new Intent(MainActivity.this, MapsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -728,7 +728,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_question) {
             dialogQuestion();
         } else if (id == R.id.nav_location) {
-            startActivity(new Intent(MainActivity.this, Maps.class));
+            startActivity(new Intent(MainActivity.this, MapsActivity.class));
         } else if (id == R.id.nav_instr) {
             dialogGeneralInstructions();
         } else if (id == R.id.nav_advise_friend) {

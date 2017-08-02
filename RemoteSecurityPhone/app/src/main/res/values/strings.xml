@@ -151,8 +151,7 @@
 \tIf you read this Privacy Policy is not in Russian, you agree that precedence will be the Russian version in case of any disputes.\n</string>
 
 
-
-<string name="strGeneralInstr">
+    <string name="strGeneralInstr">
         \t\t\tRSP program is intended for remote control and protect your phone against loss or theft by sending sms messages relevant (command).\n\n
         Functions of the program:\n
         \t\t1. The program works in the background;\n

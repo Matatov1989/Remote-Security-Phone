@@ -1,4 +1,4 @@
-package com.sergeant_matatov.remotesecurityphone;
+package com.sergeant_matatov.remotesecurityphone.Activitys;
 
 import android.Manifest;
 import android.app.Activity;
@@ -35,13 +35,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sergeant_matatov.remotesecurityphone.R;
+import com.sergeant_matatov.remotesecurityphone.SendSMS;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import static java.lang.System.exit;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity11 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     //   final String LOG_TAG = "myLogs";
 
@@ -116,7 +119,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.main_activity111);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //       Log.d(LOG_TAG, "DrawerLayout " + textPass.getText().toString());
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         //запуск стартовой инструкции
         if (loadPass().toString().isEmpty() && loadContact().toString().isEmpty() && loadQuestion().toString().isEmpty()) {
             //открываем dialog Pass
-            dialogStartInstructions();
+      //      dialogStartInstructions();
         }
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -247,7 +250,7 @@ public class MainActivity extends AppCompatActivity
         if (!editPhoneContact.getText().toString().isEmpty())
             checkContact = editPhoneContact.getText().toString();   //сохранили выбраный контакт (номер телефона)
 
-        startActivity(new Intent(this, Book.class).putExtra("flagTab", "send"));
+        startActivity(new Intent(this, BookActivity.class).putExtra("flagTab", "send"));
     }
     //кнопка отправки контактов
     public void onClickSend(View v) {
@@ -268,7 +271,7 @@ public class MainActivity extends AppCompatActivity
             if (1 > phone.length()) {
                 validationError = true;
                 validationErrorMessage.append(getResources().getString(R.string.error_blank_phoneNo));
-                Toast.makeText(MainActivity.this, validationErrorMessage.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity11.this, validationErrorMessage.toString(), Toast.LENGTH_LONG).show();
             } else {
                 sms = new SendSMS();
                 sms.sendSMS(getBaseContext(), phone, command);
@@ -315,23 +318,23 @@ public class MainActivity extends AppCompatActivity
             public void onReceive(Context arg0, Intent arg1) {
                 switch (getResultCode()) {
                     case Activity.RESULT_OK:
-                        Toast.makeText(MainActivity.this, R.string.checkSend,
+                        Toast.makeText(MainActivity11.this, R.string.checkSend,
                                 Toast.LENGTH_SHORT).show();
                         break;
                     case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-                        Toast.makeText(MainActivity.this, R.string.checkGeneric,
+                        Toast.makeText(MainActivity11.this, R.string.checkGeneric,
                                 Toast.LENGTH_SHORT).show();
                         break;
                     case SmsManager.RESULT_ERROR_NO_SERVICE:
-                        Toast.makeText(MainActivity.this, R.string.checkService,
+                        Toast.makeText(MainActivity11.this, R.string.checkService,
                                 Toast.LENGTH_SHORT).show();
                         break;
                     case SmsManager.RESULT_ERROR_NULL_PDU:
-                        Toast.makeText(MainActivity.this, R.string.checkPDU,
+                        Toast.makeText(MainActivity11.this, R.string.checkPDU,
                                 Toast.LENGTH_SHORT).show();
                         break;
                     case SmsManager.RESULT_ERROR_RADIO_OFF:
-                        Toast.makeText(MainActivity.this, R.string.checkRadio, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity11.this, R.string.checkRadio, Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -342,11 +345,11 @@ public class MainActivity extends AppCompatActivity
             public void onReceive(Context arg0, Intent arg1) {
                 switch (getResultCode()) {
                     case Activity.RESULT_OK:
-                        Toast.makeText(MainActivity.this, R.string.checkDeliveredOn,
+                        Toast.makeText(MainActivity11.this, R.string.checkDeliveredOn,
                                 Toast.LENGTH_SHORT).show();
                         break;
                     case Activity.RESULT_CANCELED:
-                        Toast.makeText(MainActivity.this, R.string.checkDeliveredOff,
+                        Toast.makeText(MainActivity11.this, R.string.checkDeliveredOff,
                                 Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -365,63 +368,7 @@ public class MainActivity extends AppCompatActivity
         groupRadCommands.clearCheck();
     }
 
-    //диплог для пароля
-    public void dialogPassword() {
-        LayoutInflater adbInflater = LayoutInflater.from(this);
-        View view = adbInflater.inflate(R.layout.dialog_security_pass, null);
-
-        btnRandPass = (Button) view.findViewById(R.id.btnRandPass);
-        btnSavePass = (Button) view.findViewById(R.id.btnSave);
-        btnCancelPass = (Button) view.findViewById(R.id.btnCancel);
-        editPass = (EditText) view.findViewById(R.id.editPass);
-
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setCancelable(true);
-        adb.setTitle(getString(R.string.titleNewPass));
-        adb.setIcon(android.R.drawable.ic_secure);
-        adb.setView(view);
-        dialog = adb.show();
-
-        //кнопка случайного пароля
-        btnRandPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Random random = new Random();
-                editPass.setText(String.valueOf(random.nextInt(999999) + 1000));
-            }
-        });
-
-        //кнопка перенести клиента
-        btnSavePass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editPass.length() >= 4 && editPass.length() <= 8) {
-                    if ("".equals(editPass.getText().toString()))
-                        Toast.makeText(MainActivity.this, getResources().getString(R.string.hintPass), Toast.LENGTH_SHORT).show();
-                    else {
-                        //             savePass(editPass.getText().toString());
-                        savePass(editPass.getText().toString());
-                        textPass.setText(getString(R.string.passText) + " " + editPass.getText().toString());
-                        dialog.dismiss();
-                        Toast.makeText(MainActivity.this, getText(R.string.toastSavePass), Toast.LENGTH_SHORT).show();
-                    }
-                } else
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.toastIfPass), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //кнопка отмены
-        btnCancelPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (loadPass().toString().isEmpty())
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.btnCancelePass), Toast.LENGTH_SHORT).show();
-                else
-                    dialog.dismiss();
-            }
-        });
-    }
-
+/*
     //диалог страртовой инструкции
     public void dialogStartInstructions() {
         LayoutInflater adbInflater = LayoutInflater.from(this);
@@ -449,48 +396,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-
-    //диалог главной инструкции
-    public void dialogGeneralInstructions() {
-        LayoutInflater adbInflater = LayoutInflater.from(this);
-        View view = adbInflater.inflate(R.layout.dialog_general_instruction, null);
-
-        btnSettingsGPS = (Button) view.findViewById(R.id.btnSettingsGPS);
-        btnOK = (Button) view.findViewById(R.id.btnOK);
-        textPrivacyPolicy = (TextView) view.findViewById(R.id.textPrivacyPolicy);
-
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setCancelable(true);
-        adb.setTitle(getString(R.string.titleGeneralInstr));
-        adb.setIcon(R.drawable.ic_instr);
-        adb.setView(view);
-        dialog = adb.show();
-
-        btnSettingsGPS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                dialog.dismiss();
-            }
-        });
-
-        btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-
-        textPrivacyPolicy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textPrivacyPolicy.setTextColor(Color.RED);
-                startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
-                dialog.dismiss();
-            }
-        });
-    }
+*/
 
     //диалог разрабов (лист)
     public void dialogDevelopers() {
@@ -532,72 +438,7 @@ public class MainActivity extends AppCompatActivity
         dialog = adb.show();
     }
 
-    //диалог контрольного вопроса
-    public void dialogQuestion() {
-        LayoutInflater adbInflater = LayoutInflater.from(this);
-        View view = adbInflater.inflate(R.layout.dialog_question, null);
 
-        btnSaveQuestion = (Button) view.findViewById(R.id.btnSave);
-        btnCancelQuestion = (Button) view.findViewById(R.id.btnCancel);
-        editAnswer = (EditText) view.findViewById(R.id.editAnswer);
-        groupRadQuestion = (RadioGroup) view.findViewById(R.id.groupRadQuestion);
-
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setCancelable(true);
-        adb.setTitle(getString(R.string.questionText));
-        adb.setIcon(android.R.drawable.ic_menu_help);
-        adb.setView(view);
-        dialog = adb.show();
-
-        //выбор команды через radio
-        groupRadQuestion.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.radioQuestion1:
-                        question = getString(R.string.question1);
-                        break;
-                    case R.id.radioQuestion2:
-                        question = getString(R.string.question2);
-                        break;
-                    case R.id.radioQuestion3:
-                        question = getString(R.string.question3);
-                        break;
-                    case R.id.radioQuestion4:
-                        question = getString(R.string.question4);
-                        break;
-                }
-            }
-        });
-
-        btnSaveQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!question.toString().isEmpty() && !editAnswer.getText().toString().isEmpty()) {
-                    saveQuestion(question);
-                    saveAnswer(editAnswer.getText().toString());
-                    groupRadQuestion.clearCheck();
-                    textQuestion.setText(getString(R.string.question) + " " + getString(R.string.strSingNum) + "" + Integer.parseInt(question.replaceAll("[\\D]", "")));
-                    editAnswer.setText("");
-                    dialog.dismiss();
-                    Toast.makeText(MainActivity.this, getText(R.string.toastQuestionAnswer), Toast.LENGTH_SHORT).show();
-                } else if (question.toString().isEmpty() && editAnswer.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, getText(R.string.toastEnterQuestionAnswer), Toast.LENGTH_SHORT).show();
-                } else if (!question.toString().isEmpty() && editAnswer.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, getText(R.string.toastEnterAnswer), Toast.LENGTH_SHORT).show();
-                } else if (question.toString().isEmpty() && !editAnswer.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, getText(R.string.toastEnterQuestion), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        btnCancelQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-    }
 
     //сохраняет пароль
     public void savePass(String pass) {
@@ -709,7 +550,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_local) {
-            startActivity(new Intent(MainActivity.this, MapsActivity.class));
+            startActivity(new Intent(MainActivity11.this, MapsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -722,15 +563,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_password) {
-            dialogPassword();
+     //       dialogPassword();
         } else if (id == R.id.nav_contact) {
-            startActivity(new Intent(this, Book.class).putExtra("flagTab", "security"));
+            startActivity(new Intent(this, BookActivity.class).putExtra("flagTab", "security"));
         } else if (id == R.id.nav_question) {
-            dialogQuestion();
+     //       dialogQuestion();
         } else if (id == R.id.nav_location) {
-            startActivity(new Intent(MainActivity.this, MapsActivity.class));
+            startActivity(new Intent(MainActivity11.this, MapsActivity.class));
         } else if (id == R.id.nav_instr) {
-            dialogGeneralInstructions();
+      //      dialogGeneralInstructions();
         } else if (id == R.id.nav_advise_friend) {
             sendAdviseFriend();
         } else if (id == R.id.nav_developers) {

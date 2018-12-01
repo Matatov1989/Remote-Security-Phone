@@ -1,4 +1,4 @@
-package com.sergeant_matatov.remotesecurityphone;
+package com.sergeant_matatov.remotesecurityphone.Tasks;
 
 import android.content.Context;
 import android.content.SharedPreferences;

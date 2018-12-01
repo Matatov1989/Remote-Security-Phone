@@ -1,4 +1,4 @@
-package com.sergeant_matatov.remotesecurityphone;
+package com.sergeant_matatov.remotesecurityphone.View;
 
 import android.content.Context;
 import android.os.Build;

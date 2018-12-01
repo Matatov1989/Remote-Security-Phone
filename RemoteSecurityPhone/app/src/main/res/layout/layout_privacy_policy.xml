@@ -6,9 +6,9 @@
     android:background="@drawable/fon"
 
     android:orientation="vertical"
-    tools:context="com.sergeant_matatov.remotesecurityphone.PrivacyPolicy">
+    tools:context="com.sergeant_matatov.remotesecurityphone.Activitys.PrivacyPolicy">
 
-    <com.sergeant_matatov.remotesecurityphone.StatusBarView
+    <com.sergeant_matatov.remotesecurityphone.View.StatusBarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_status_bar" />

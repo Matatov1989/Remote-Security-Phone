@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    android:orientation="vertical">
+    android:layout_weight="1"
+    android:background="@drawable/fon"
+    android:orientation="vertical"
+    tools:context=".Activitys.BookActivity">
 
     <com.sergeant_matatov.remotesecurityphone.View.StatusBarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_status_bar" />
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerContact"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.sergeant_matatov.remotesecurityphone.Maps" />
+        android:layout_margin="8dp" />
 
 </LinearLayout>

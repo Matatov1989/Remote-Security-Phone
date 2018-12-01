@@ -8,7 +8,7 @@
     android:fitsSystemWindows="false"
     android:orientation="vertical">
 
-    <com.sergeant_matatov.remotesecurityphone.StatusBarView
+    <com.sergeant_matatov.remotesecurityphone.View.StatusBarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_status_bar"
@@ -36,7 +36,7 @@
         tools:openDrawer="start">
 
         <include
-            layout="@layout/app_bar_main"
+            layout="@layout/app_bar_main111"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -46,7 +46,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header_main"
+            app:headerLayout="@layout/nav_header_main111"
             app:menu="@menu/main_activity_drawer" />
 
     </android.support.v4.widget.DrawerLayout>

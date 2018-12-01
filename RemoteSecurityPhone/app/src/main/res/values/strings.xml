@@ -102,53 +102,7 @@
     <string name="dialogPermissionLocation">The program uses the function of determining the location of the device. It is necessary to determine the location when the device sim card is replaced, and when receiving the appropriate command sms. For the determination of the location of the phone may incur additional fees. Details can be obtained from your mobile operator.</string>
 
 
-    <string name="textTitlePrivacyPolicy">PrivacyPolicy\nRemote Security Phone</string>
-    <string name="textPrivacyPolicy">
-<b><u>I.\tPurpose of the program</u></b> - is to protect your phone against theft and loss in the event of losing your phone quickly and easily find it through an ordinary sms-message.\n\n\n
 
-<b><u>II.\tConvenience</u></b>\n
-\t\t1. Do not need to register to use the program;\n
-\t\t2. The program runs in the background;\n
-\t\t3. The program at startup (restart) device monitors the replacement sim - card. If the unit has been replaced sim - card, your contacts that you choose as an additional protection will receive a message;\n
-\t\t4. View the received coordinates on google map in the program;\n
-\t\t5. Administration of ready commands to the program.\n\n\n
-
-<b><u>III.\tThe program has access to:</u></b>\n
-\t\t1. Obtaining serial numbers sim card in the phone. This is necessary so that to protect your phone against theft, which allows to determine a replacement sim card. In the case of replacement will automatically alert the selected contact you (paragraph III.3.a) Via sms message (paragraph III.4);\n
-\t\t2. Definition download (inclusion) device that allows you to specify a replacement sim card (paragraph III.1) And location data unit (paragraph III.7) When the phone is switched on;\n
-\t\t3. Contacts, it is necessary to:\n
-\t\t\ta. In order to inform the selected contact to replace the sim card on your device (paragraph III.1);\n
-\t\t\tb. In order to quickly and conveniently send a sms with the program team to another device (paragraph III.4);\n
-\t\tContacts phonebook is only available to the user program, and will not go;\n
-\t\t4. Sending sms messages, it is necessary to:\n
-\t\t\ta. For quick and easy sending sms teams finished with the program;\n
-\t\t\tb. When you turn on your phone (paragraph III.2) Find a replacement sim card (paragraph III.1);\n
-\t\t\tc. To automatically send a message about the status of the battery (paragraph III.8);\n
-\t\t\td. To automatically send the coordinates of the location of the device, provided that the phone will take the appropriate command in the form of sms (paragraph III.5) On device location determination of (paragraph III.7);\n
-\t\tFor sending sms messages may apply. Details can be obtained from your mobile operator;\n
-\t\t5. Admission sms messages, it is necessary to define the command to the device (command: turn the sound device (paragraph IV.1), to determine the location of the device (paragraph IV.2), to include a notification (paragraph IV.3), turn off the notification (paragraph IV.4), check the battery status (paragraph IV.5), save the coordinates obtained from another device (paragraph IV.2));\n
-\t\t6. Implementation of a telephone call, it is necessary if the phone will sms command (paragraph III.5) On the inclusion of a notification (paragraph IV.3). For the implementation of the call may be charged. Details can be obtained from your mobile operator;\n
-\t\t7. With this device location, it is necessary to:\n
-\t\t\ta. To determine the location of the device when replacing the sim card (paragraph III.1);\n
-\t\t\tb. To determine the location of the device when receiving the appropriate command sms (paragraph III.5);\n
-\t\t8. Determination of the status of the phone battery, it is necessary to:\n
-\t\t\ta. To determine the battery state of charge during the activation commands for the inclusion of a notification (paragraph IV.3);\n
-\t\t\tb. To determine the battery state of charge at reception (paragraph III.5) Team battery status (paragraph IV.5).\n\n\n
-
-<b><u>IV.\tFeatures:</u></b>\n
-\t\t1. Remotely turn on the sound, that is, switch your phone to silent mode or vibrate to normal;\n
-\t\t2. Remotely identify the location of the phone, that is, to locate the vehicle and send the coordinates of the sender;\n
-\t\t3. Remotely enable notification, that is, the device wakes up, a message box appears on the screen that would be called back, the sound turns on command to the sender, the indicator flashes and the vibration is activated;\n
-\t\t4. Remotely turn off the notification, that is, turn off all that is written in paragraph IV.3;\n
-\t\t5. Remotely check the status of the battery, that is, the phone determines the state of the battery in percentage and the result is sent to the sender.\n
-\t\t6. View received coordinates with the program on the map.\n\n\n
-
-<b><u>V.\tSecurity</u></b>\n
-\t\t1. The program collects the phone book data, and these data are only available to the user program, and never passed;\n
-\t\t2. The program uses the serial number of sim cards, and this number is not available to the user program, and do not transferred;\n
-\t\t3. The program uses geolocation data unit, which is available only to the second person, that is the sender of the command sms (about determining phone location (paragraph IV.2)), Provided that the sender is correctly written password from unauthorized access of the recipient;\n
-\t\t4. The program uses a battery status data that is available to the second person, that is the sender of the command sms (battery status (paragraph IV.5)), Provided that the sender is correctly written password from unauthorized access of the recipient.\n\n
-\tIf you read this Privacy Policy is not in Russian, you agree that precedence will be the Russian version in case of any disputes.\n</string>
 
 
     <string name="strGeneralInstr">
@@ -176,5 +130,15 @@
         \t\t3. In order for your phone to react to the <u>\"find out the location of the phone\"</u>, be sure about the included \"source of data on the location\" in \"Service position\". Turn on or \"the GPS satellites\" or \"location on the network\";\n
         \t\t4. Try to remember your own password. In the case of blackouts, send the following sms message: <b>\"My Question\"</b>, and wait for the security question that you selected, and then type your answer to the security question in parenthesis and send. If the answer is correct, you will receive your forgotten password.\n\n
         Use of health.\n</string>
+
+
+    <string name="title_activity_layout_main">LayoutMainActivity</string>
+
+    <string name="text_manual">Вас приветствует служба Дистанционной защиты вашего телефона. Для запуска приложения, Вам необходимо выбрать контакт, который будет получать SMS сообщения в случае, пропажи Вашего устройства с последующей заменой SIM-карты. Примечание! Программа не сработает если злоумышленник перед заменой SIM-карты отформатирует телефон или просто удалит программу.</string>
+    <string name="textPrivacyPolicy">Privacy Policy</string>
+    <string name="textVersion">Version 3.6</string>
+    <string name="btnChooseContact">choose\na contact</string>
+    <string name="btnSwitch">start a programm</string>
+
 
 </resources>

@@ -1,4 +1,4 @@
-package com.sergeant_matatov.remotesecurityphone;
+package com.sergeant_matatov.remotesecurityphone.Services;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.gsm.SmsMessage;
+
+import com.sergeant_matatov.remotesecurityphone.R;
+import com.sergeant_matatov.remotesecurityphone.SendSMS;
+import com.sergeant_matatov.remotesecurityphone.Tasks.TaskCoord;
 
 /**
  * Created by Yurka on 12.03.2016.
@@ -83,29 +87,27 @@ public class ServiceSMS extends BroadcastReceiver {
                     //условие для включения звука
                     if (myPass.equals(strCom[1]) && "onSound".equals(strCom[2])) {
                         abortBroadcast();           //не сохраняет sms во входящих
-                        TaskSound ts = new TaskSound();
-                        ts.context = context;         //передаем context
-                        ts.execute();               //запускаем task
+
                     }
                     //условие для получения координат
                     else if (myPass.equals(strCom[1]) && "onGPS".equals(strCom[2])) {
                         abortBroadcast();             //не сохраняет sms во входящих
-                        LocationPhone l = new LocationPhone();
-                        l.getCoordinates(context, strCom[0], 1);
+                 //       LocationPhone l = new LocationPhone();
+                 //       l.getCoordinates(context, strCom[0], 1);
                     }
                     //условие для включения notification
                     else if (myPass.equals(strCom[1]) && "onNotif".equals(strCom[2])) {
                         abortBroadcast();           //не сохраняет sms во входящих
                         //вывод диалога
-                        intent = new Intent("android.intent.action.MAIN");
+                 /*       intent = new Intent("android.intent.action.MAIN");
                         intent.setClass(context, DialogNotif.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("phone", strCom[0]);
                         intent.putExtra("finish", false);
-                        context.startActivity(intent);
+                        context.startActivity(intent);*/
                     }
 
-                    //условие для выключения notification
+                  /*  //условие для выключения notification
                     else if (myPass.equals(strCom[1]) && "offNotif".equals(strCom[2])) {
                         abortBroadcast();           //не сохраняет sms во входящих
                         //стоп ServiceBattery
@@ -118,23 +120,24 @@ public class ServiceSMS extends BroadcastReceiver {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                     }
-
+*/
                     //условие для получения состояния батареи
-                    else if (myPass.equals(strCom[1]) && "onBattery".equals(strCom[2])) {
+                  /*  else if (myPass.equals(strCom[1]) && "onBattery".equals(strCom[2])) {
                         abortBroadcast();             //не сохраняет sms во входящих
                         context.startService(new Intent(context, ServiceBattery.class).putExtra("phone", strCom[0]).putExtra("type", "command"));
-                    }
-                } else if (strCom.length == 5 && "Coordinates".equals(strCom[1]))   //условие для обработки координат
+                    }*/
+                }
+                else if (strCom.length == 5 && "Coordinates".equals(strCom[1]))   //условие для обработки координат
                 {
-                    TaskCoord tc = new TaskCoord();
+                   /* TaskCoord tc = new TaskCoord();
                     tc.context = context;
                     tc.coordinates = strCom[2];
-                    tc.execute();
+                    tc.execute();*/
                 } else if (strCom.length == 6 && "Coordinates".equals(strCom[1])) {
-                    TaskCoord tc = new TaskCoord();
+                 /*   TaskCoord tc = new TaskCoord();
                     tc.context = context;
                     tc.coordinates = strCom[3];
-                    tc.execute();
+                    tc.execute();*/
                 }
             }
         }

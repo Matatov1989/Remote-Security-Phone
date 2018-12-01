@@ -9,8 +9,8 @@
     android:padding="16dp"
     android:background="@drawable/fon"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sergeant_matatov.remotesecurityphone.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:context="com.sergeant_matatov.remotesecurityphone.Activitys.MainActivity11"
+    tools:showIn="@layout/app_bar_main111">
 
     <LinearLayout
         android:layout_width="match_parent"

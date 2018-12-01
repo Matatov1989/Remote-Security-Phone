@@ -1,4 +1,4 @@
-package com.sergeant_matatov.remotesecurityphone;
+package com.sergeant_matatov.remotesecurityphone.Activitys;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +13,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sergeant_matatov.remotesecurityphone.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -100,6 +101,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(MapsActivity.this, MainActivity.class));
+        startActivity(new Intent(MapsActivity.this, MainActivity11.class));
     }
 }

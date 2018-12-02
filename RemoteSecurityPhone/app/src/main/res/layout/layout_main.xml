@@ -7,10 +7,16 @@
     android:background="@drawable/fon"
     tools:context=".Activitys.MainActivity">
 
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.sergeant_matatov.remotesecurityphone.View.StatusBarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_status_bar" />
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

@@ -146,7 +146,7 @@
                 android:layout_weight="0"
                 android:background="@drawable/buttons"
                 android:text="@string/btnBook"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:onClick="onClickBook" />
         </LinearLayout>
 
@@ -164,7 +164,7 @@
                 android:layout_weight="0"
                 android:background="@drawable/buttons"
                 android:text="@string/btnSendComm"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:onClick="onClickSend" />
 
         </LinearLayout>

@@ -63,9 +63,6 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
 
         @Override
         public void onClick(View v) {
-     //       String strName = arrayListContact.get(getAdapterPosition()).getNameContact();
-     //       String strPhone = arrayListContact.get(getAdapterPosition()).getPhoneContact();
-
             saveContact(arrayListContact.get(getAdapterPosition()).getNameContact(), arrayListContact.get(getAdapterPosition()).getPhoneContact());
         }
 
@@ -80,15 +77,6 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
             edit.putString(CALLER_NUMBER, contactPhone);
             edit.commit();
 
-
-      /*
-            SharedPreferences contactPref = context.getSharedPreferences("RSP", MODE_PRIVATE);
-            SharedPreferences.Editor ed = contactPref.edit();
-            ed.putString("CONTACT_NAME", contact);
-            ed.commit();*/
-            //отправляем sms об оповещении о том что этот контакт выбрали как охраника
-     //       contact += " ";
-   //         String[] arrTemp = contact.split(" ");
 
  //           sms = new SendSMS();
   //          sms.sendSMS(getBaseContext(), arrTemp[1], getString(R.string.smsFirst));

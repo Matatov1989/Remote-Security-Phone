@@ -26,18 +26,20 @@ import com.sergeant_matatov.remotesecurityphone.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.System.exit;
+
 public class MainActivity extends AppCompatActivity {
     final String LOG_TAG = "myLogs";
     TextView textPolicy;
     Switch switchStartProgramm;
 
 
+    public static final int CODE_READ_PHONE_STATE = 1; // code you want.
+
     public static final int MULTIPLE_PERMISSIONS = 2; // code you want.
 
-    String[] permissions = new String[]{
-            android.Manifest.permission.READ_CONTACTS,
+    String[] PERMISSIONS = new String[]{
             android.Manifest.permission.SEND_SMS,
-            android.Manifest.permission.CALL_PHONE,
             android.Manifest.permission.ACCESS_FINE_LOCATION,
     };
 
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.layout_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        checkPermissions();
 
         switchStartProgramm = (Switch) findViewById(R.id.switchStartProgramm);
         switchStartProgramm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //open a book with contacts
-    private void onClickBook(View view) {
+    public void onClickBook(View view) {
         startActivity(new Intent(this, BookActivity.class));
     }
 
@@ -109,18 +113,45 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void checkPermissionPhoneState(){
-
-        if (ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, android.Manifest.permission.READ_PHONE_STATE)) {
-                Log.d(LOG_TAG, "dialog ");
-                dialogPermissionPhoneState();
-            } else {
-                Log.d(LOG_TAG, "request permission ");
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.READ_PHONE_STATE}, 1);
+    private void checkPermissions() {
+        int result;
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        for (String p : PERMISSIONS) {
+            result = ContextCompat.checkSelfPermission(this, p);
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(p);
             }
         }
-        else {
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MULTIPLE_PERMISSIONS);
+            //         return false;
+        }
+    }
+    private void checkPermissionPhoneState() {
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_PHONE_STATE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+                Log.d(LOG_TAG, "dialog ");
+                dialogPermissionPhoneState();
+
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_PHONE_STATE}, CODE_READ_PHONE_STATE);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            // Permission has already been granted
+
             Log.d(LOG_TAG, "save  ");
             TelephonyManager telephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
             String numSIM = telephonyMgr.getSimSerialNumber();
@@ -132,15 +163,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-    private void dialogPermissionPhoneState(){
+    private void dialogPermissionPhoneState() {
         android.app.AlertDialog.Builder adb = new android.app.AlertDialog.Builder(this);
         adb.setCancelable(false);
         adb.setMessage(R.string.dialogPermissionCall);
         adb.setPositiveButton(R.string.btnOK, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.READ_PHONE_STATE}, 1);
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.READ_PHONE_STATE}, CODE_READ_PHONE_STATE);
                 dialog.dismiss();
             }
         });
@@ -149,22 +178,60 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-
-        Log.d(LOG_TAG, "onRequestPermissionsResult  ");
-
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case 1: {
+            case CODE_READ_PHONE_STATE: {
                 checkPermissionPhoneState();
-     /*           if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-          //          getCalendarsToList();
-                } else {
-                    checkPermissionPhoneState();
-                }*/
                 return;
             }
+
+            case MULTIPLE_PERMISSIONS: {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.SEND_SMS)) {
+                    showDialogOK(getString(R.string.dialogPermissionSMS), new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            switch (which)
+                            {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    checkPermissions();
+                                    break;
+                            }
+                        }
+                    });
+                }
+
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    showDialogOK(getString(R.string.dialogPermissionLocation), new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            switch (which)
+                            {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    checkPermissions();
+                                    break;
+                            }
+                        }
+                    });
+                }
+                return;
+            }
+
         }
     }
+
+    private void showDialogOK(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton(getString(R.string.btnOK), okListener)
+                .create()
+                .show();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -190,4 +257,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
+        exit(0);
+    }
 }

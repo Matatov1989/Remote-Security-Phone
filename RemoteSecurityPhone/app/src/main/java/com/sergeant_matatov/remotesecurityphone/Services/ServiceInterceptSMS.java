@@ -8,13 +8,12 @@ import android.os.Bundle;
 import android.telephony.gsm.SmsMessage;
 
 import com.sergeant_matatov.remotesecurityphone.R;
-import com.sergeant_matatov.remotesecurityphone.SendSMS;
-import com.sergeant_matatov.remotesecurityphone.Tasks.TaskCoord;
+
 
 /**
  * Created by Yurka on 12.03.2016.
  */
-public class ServiceSMS extends BroadcastReceiver {
+public class ServiceInterceptSMS extends BroadcastReceiver {
     String[] strCom;    //для команды
     Context context;
 
@@ -72,16 +71,14 @@ public class ServiceSMS extends BroadcastReceiver {
                         String question = questionPref.getString(SAVED_QUESTION, "");
                         question = question.substring(0, question.length() - 1);
                         String msg = context.getString(R.string.smsQuestion) + " №" + question + " " + context.getString(R.string.smsQuestionInst);
-                        SendSMS sms = new SendSMS();
-                        sms.sendSMS(context, strCom[0], msg);
+
                     }
                     //условие для получения пароля на ответ контрольного вопроса
                     else if (myAnswer.equals(strCom[1])) {
                         abortBroadcast();             //не сохраняет sms во входящих
                         String msg = context.getString(R.string.smsAnswer) + " " + myPass;
                         //          sendSMS(strCom[0], msg, context);
-                        SendSMS sms = new SendSMS();
-                        sms.sendSMS(context, strCom[0], msg);
+
                     }
                 } else if (strCom.length == 3) {
                     //условие для включения звука
@@ -92,8 +89,7 @@ public class ServiceSMS extends BroadcastReceiver {
                     //условие для получения координат
                     else if (myPass.equals(strCom[1]) && "onGPS".equals(strCom[2])) {
                         abortBroadcast();             //не сохраняет sms во входящих
-                 //       LocationPhone l = new LocationPhone();
-                 //       l.getCoordinates(context, strCom[0], 1);
+
                     }
                     //условие для включения notification
                     else if (myPass.equals(strCom[1]) && "onNotif".equals(strCom[2])) {

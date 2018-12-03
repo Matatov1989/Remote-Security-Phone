@@ -28,5 +28,9 @@ dependencies {
 
     //   compile 'com.google.android.gms:play-services:11.0.2'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
     testImplementation 'junit:junit:4.12'
+
+
+
 }

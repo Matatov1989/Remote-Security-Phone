@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.sergeant_matatov.remotesecurityphone.Database.ContactData;
 import com.sergeant_matatov.remotesecurityphone.R;
-import com.sergeant_matatov.remotesecurityphone.SendSMS;
 
 import java.util.ArrayList;
 
@@ -78,8 +77,6 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
             edit.commit();
 
 
- //           sms = new SendSMS();
-  //          sms.sendSMS(getBaseContext(), arrTemp[1], getString(R.string.smsFirst));
         }
 
     }

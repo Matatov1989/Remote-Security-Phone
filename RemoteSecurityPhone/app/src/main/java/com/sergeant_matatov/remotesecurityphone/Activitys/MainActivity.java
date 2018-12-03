@@ -22,6 +22,8 @@ import android.widget.TextView;
 
 import com.sergeant_matatov.remotesecurityphone.Manifest;
 import com.sergeant_matatov.remotesecurityphone.R;
+import com.sergeant_matatov.remotesecurityphone.Services.ServiceGetLocation;
+import com.sergeant_matatov.remotesecurityphone.Services.ServiceSendMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+       //         startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                Intent intent = new Intent(MainActivity.this, ServiceGetLocation.class);
+                startService(intent);
             }
         });
     }

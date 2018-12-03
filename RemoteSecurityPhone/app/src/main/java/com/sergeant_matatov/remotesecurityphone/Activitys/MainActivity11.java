@@ -36,7 +36,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sergeant_matatov.remotesecurityphone.R;
-import com.sergeant_matatov.remotesecurityphone.SendSMS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +86,6 @@ public class MainActivity11 extends AppCompatActivity
 
     String question = "";
 
-    SendSMS sms;
 
     SharedPreferences sinSIMPref;    //для sim
     final String SAVED_SIM = "saved_sim";
@@ -273,8 +271,7 @@ public class MainActivity11 extends AppCompatActivity
                 validationErrorMessage.append(getResources().getString(R.string.error_blank_phoneNo));
                 Toast.makeText(MainActivity11.this, validationErrorMessage.toString(), Toast.LENGTH_LONG).show();
             } else {
-                sms = new SendSMS();
-                sms.sendSMS(getBaseContext(), phone, command);
+
                 checkSendSMS();
             }
         } else {
@@ -304,8 +301,7 @@ public class MainActivity11 extends AppCompatActivity
             if (validationError && (1 > pass.length() || 1 > phone.length() || 2 > command.length()))
                 Toast.makeText(this, validationErrorMessage.toString(), Toast.LENGTH_LONG).show();
             else {
-                sms = new SendSMS();
-                sms.sendSMS(getBaseContext(), phone, pass + "-" + command);
+
                 checkSendSMS();
             }
         }

@@ -132,6 +132,10 @@
         Use of health.\n</string>
 
 
+
+
+
+
     <string name="title_activity_layout_main">LayoutMainActivity</string>
 
     <string name="text_manual">Вас приветствует служба Дистанционной защиты вашего телефона. Для запуска приложения, Вам необходимо выбрать контакт, который будет получать SMS сообщения в случае, пропажи Вашего устройства с последующей заменой SIM-карты. Примечание! Программа не сработает если злоумышленник перед заменой SIM-карты отформатирует телефон или просто удалит программу.</string>
@@ -139,6 +143,9 @@
     <string name="textVersion">Version 3.6</string>
     <string name="btnChooseContact">choose\na contact</string>
     <string name="btnSwitch">start a programm</string>
+
+    <string name="textSMSnewSimWithLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты телефона: %1$s, %2$S</string>
+    <string name="textSMSnewSimWithoutLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты отсуствуют.</string>
 
 
 </resources>

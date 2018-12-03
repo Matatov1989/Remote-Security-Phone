@@ -16,7 +16,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!-- для проверки на включение телефона -->
@@ -25,27 +24,11 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
-    <!-- для alertDialog -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <!-- вызовы -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!--
-        экстренные вызовы
-        <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
-    -->
-    <!-- программной разблокировки -->
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-
-
     <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
     <uses-feature android:name="android.hardware.location.gps" />
 
-    <!--     <uses-library android:name="com.google.android.maps" /> -->
-    <!--
-        <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    -->
+    <!-- <uses-library android:name="com.google.android.maps" /> -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
@@ -77,7 +60,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".Services.ServiceSMS">
+        <receiver android:name=".Services.ServiceInterceptSMS">
             <intent-filter android:priority="100">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
@@ -90,13 +73,22 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDVP-WidYHbDxaV8U6A9sy4BsbvRmimACs" />
+            android:value="AIzaSyDVP-WidYSbDxaV1U5A3sr1BsbvRmlsACs" />
 
         <activity android:name=".Activitys.PrivacyPolicy" />
         <activity
             android:name=".Activitys.MainActivity11"
             android:label="@string/title_activity_layout_main"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+
+        <service
+            android:name=".Services.ServiceGetLocation"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Services.ServiceSendMessage"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

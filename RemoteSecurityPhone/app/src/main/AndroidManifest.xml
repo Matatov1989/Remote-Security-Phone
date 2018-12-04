@@ -73,7 +73,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDVP-WidYSbDxaV1U5A3sr1BsbvRmlsACs" />
+            android:value="AIzaSyDVP-WidYSbDxaV8U5A9sy1BsbvRmlmACs" />
 
         <activity android:name=".Activitys.PrivacyPolicy" />
         <activity

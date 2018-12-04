@@ -28,13 +28,13 @@ public class ServiceSendMessage extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //    Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
-        Log.d(LOG_TAG, " start SEND");
+        Log.d(LOG_TAG, " ***SEND***");
 
 
         //      intent = Intent.getIntent();
 
-        Log.d(LOG_TAG, " start SEND lat "+ intent.getDoubleExtra("lat", 0.0));
-        Log.d(LOG_TAG, " start SEND lon "+ intent.getDoubleExtra("lon", 0.0));
+        Log.d(LOG_TAG, " SEND lat "+ intent.getDoubleExtra("lat", 0.0));
+        Log.d(LOG_TAG, " SEND lon "+ intent.getDoubleExtra("lon", 0.0));
         double lat = intent.getDoubleExtra("lat", 0.0);
         double lon = intent.getDoubleExtra("lon", 0.0);
 
@@ -44,7 +44,7 @@ public class ServiceSendMessage extends Service {
         else
             message = getString(R.string.textSMSnewSimWithLocal, ""+lat, ""+lon);
 
-        Log.d(LOG_TAG, " start SEND message "+ message);
+        Log.d(LOG_TAG, " SEND message "+ message);
 
         SmsManager sms = SmsManager.getDefault();
         ArrayList<String> al_message = new ArrayList<String>();
@@ -59,7 +59,7 @@ public class ServiceSendMessage extends Service {
             PendingIntent pi_delivered = PendingIntent.getBroadcast(this, i, deliveredIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             al_piDelivered.add(pi_delivered);
         }
-//        sms.sendMultipartTextMessage("0526461150", null, al_message, al_piSent, al_piDelivered);
+        sms.sendMultipartTextMessage("0526461150", null, al_message, al_piSent, al_piDelivered);
 
         stopSelf();
         // If we get killed, after returning from here, restart
@@ -71,7 +71,5 @@ public class ServiceSendMessage extends Service {
         Log.d(LOG_TAG, " stop SEND");
         //   Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
 
-
     }
-
 }

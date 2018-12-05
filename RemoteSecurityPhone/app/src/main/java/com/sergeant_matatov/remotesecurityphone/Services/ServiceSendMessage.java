@@ -70,6 +70,5 @@ public class ServiceSendMessage extends Service {
     public void onDestroy() {
         Log.d(LOG_TAG, " stop SEND");
         //   Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
-
     }
 }

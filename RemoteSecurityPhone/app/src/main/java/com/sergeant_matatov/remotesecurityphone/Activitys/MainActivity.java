@@ -81,8 +81,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
        //         startActivity(new Intent(MainActivity.this, MapsActivity.class));
-                Intent intent = new Intent(MainActivity.this, ServiceGetLocation.class);
-                startService(intent);
+      //          Intent intent = new Intent(MainActivity.this, ServiceGetLocation.class);
+      //          startService(intent);
+
+                String textControl = getString(R.string.textSMSnewSimWithLocal, "33.558", "32.968");
+
+
+                int indexStart = textControl.indexOf('[');
+                int indexStop = textControl.indexOf(']');
+
+                Log.d(LOG_TAG, " index " + indexStart+ " "+indexStop);
+
+
+                char[] buf = new char[indexStop - indexStart];
+                textControl.getChars((indexStart+1), indexStop, buf, 0);
+                String textLocation = new String(buf);
+                textLocation.replace(",", "");
+                String []tempLocal = new String[2];
+         //       tempLocal.s
+
+
+                Log.d(LOG_TAG, " new String(buf) " + new String(buf));
+
+
             }
         });
     }

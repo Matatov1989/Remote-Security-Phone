@@ -148,7 +148,7 @@
     <string name="btnChooseContact">Выбрать\nконтакт</string>
     <string name="btnSwitch">запустить программу</string>
 
-    <string name="textSMSnewSimWithLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты телефона: %1$s, %2$S</string>
+    <string name="textSMSnewSimWithLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты телефона: [%1$s, %2$S]</string>
     <string name="textSMSnewSimWithoutLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты отсуствуют.</string>
 
 

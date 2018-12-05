@@ -8,38 +8,30 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import static android.content.Context.TELEPHONY_SERVICE;
 
 /**
  * Created by Yurka on 12.03.2016.
  */
-public class ServiceSecur extends BroadcastReceiver {
-    SharedPreferences sinSIMPref;    //для sim
-    final String SAVED_SIM = "saved_sim";
-
+public class ServiceSecurity extends BroadcastReceiver {
+    final String LOG_TAG = "myLogs";
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.d(LOG_TAG, " on");
         try {
-            Thread.sleep(30000);
+            Thread.sleep(50000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Log.d(LOG_TAG, " 1on");
         if ("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) {
-            Intent serviceLauncher = new Intent(context, ServiceSecur.class);
+            Intent serviceLauncher = new Intent(context, ServiceSecurity.class);
             context.startService(serviceLauncher);
-
-            //вытаскиваем старый серийник sim карты
-            //    sinSIMPref = context.getSharedPreferences("My sim", context.MODE_PRIVATE);
-            //    String oldSIM = sinSIMPref.getString(SAVED_SIM, "");
-
 
             SharedPreferences sinSIMPref = context.getSharedPreferences("rsp_contact", context.MODE_PRIVATE);
             String oldSIM = sinSIMPref.getString("save_serial_sim_card", "");
-            //    SharedPreferences.Editor ed = sinSIMPref.edit();
-            //    ed.putString("save_serial_sim_card", numSIM);
-            //     ed.commit();
-
 
             TelephonyManager telephonyMgr = (TelephonyManager) context.getSystemService(TELEPHONY_SERVICE);
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {

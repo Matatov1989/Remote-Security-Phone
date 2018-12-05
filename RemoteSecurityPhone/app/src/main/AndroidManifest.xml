@@ -53,7 +53,7 @@
             android:screenOrientation="portrait" />
 
         <receiver
-            android:name=".Services.ServiceSecur"
+            android:name=".Services.ServiceSecurity"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

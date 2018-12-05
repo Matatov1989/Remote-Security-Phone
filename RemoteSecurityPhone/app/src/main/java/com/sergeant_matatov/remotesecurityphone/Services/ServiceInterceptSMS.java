@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.telephony.gsm.SmsMessage;
 import android.util.Log;
 
@@ -20,15 +22,16 @@ public class ServiceInterceptSMS extends BroadcastReceiver {
     String[] strCom;    //для команды
     Context context;
 
-    String text;
+    String textMessage = "";
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        String textControl = context.getString(R.string.textSMSnewSimWithoutLocal);
         //Intercept SMS
         Bundle bundle = intent.getExtras();
         SmsMessage[] msgs = null;
-        String str = "";
+  //      String str = "";
         if (bundle != null) {
             //get text
             Object[] pdus = (Object[]) bundle.get("pdus");
@@ -36,29 +39,34 @@ public class ServiceInterceptSMS extends BroadcastReceiver {
             Log.d(LOG_TAG, "get long msgs.len: " + msgs.length);
             for (int i = 0; i < msgs.length; i++) {
                 msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                str += msgs[i].getOriginatingAddress();
-                str += "-";
-                str += msgs[i].getMessageBody().toString();
+           //     str += msgs[i].getOriginatingAddress();
+           //     str += "-";
+           //     str += msgs[i].getMessageBody().toString();
+                textMessage += msgs[i].getMessageBody();
                 Log.d(LOG_TAG, "get long getMessageBody(): " + msgs[i].getMessageBody());
             }
 
-            Log.d(LOG_TAG, "get long sms: " + str);
+            Log.d(LOG_TAG, " if " + (textControl.equals(textMessage)));
 
-            if (str.charAt(str.length() - 1) != '-') {
-                str += '-';
-            }
+            Log.d(LOG_TAG, " textControl " + textControl);
+            Log.d(LOG_TAG, " textMessage " + textMessage);
 
-            //breake a message to phone number and text
-            strCom = str.split("-");
+            if (!textControl.equals(textMessage)){
 
-            Log.d(LOG_TAG, "get sms:  " + strCom[0]);
-            Log.d(LOG_TAG, "get sms:  " + strCom[1]);
+                int indexStart = textMessage.indexOf('[');
+                int indexStop = textMessage.indexOf(']');
 
-            if (strCom.length == 2) {
+                Log.d(LOG_TAG, " index " + indexStart+ " "+indexStop);
 
-            }
-            else if (strCom.length == 3) {
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+                        .setSmallIcon(R.mipmap.ic_logo)
+                        .setContentTitle(context.getString(R.string.app_name))
+                        .setContentText(textMessage)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
+
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                notificationManager.notify(101, mBuilder.build());
             }
         }
     }

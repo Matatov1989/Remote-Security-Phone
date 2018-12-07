@@ -1,2 +1,32 @@
-# Remote-Security-Phone
-Program Remote Security Phone (RSP) is designed for remote control and protect your phone against loss or theft by sending sms messages relevant (teams), without registration.  Software features:      1. The program runs in the background;      2. program at startup (restart) the phone keeps track replacement sim - card. If a replacement sim has been made on the phone - card, your contact that you select as an additional protection will receive a message;      3. Remotely turn the sound;      4. Remote Locate Phone (include GPS);      5. remotely check the status of the battery;      6. Remotely enable notification (playing music, running vibration, display and output to the appropriate message screen);      7. Remotely turn off the notification;      8. Viewing the received coordinates on google map;      9. Administration of ready commands to the program.
+# Remote Security Phone #
+
+---
+
+The program Remote Security Phone is designed for remote protection of the phone against loss and theft through simple messages.
+
+---
+
+### Functions: ###
+1. The program runs in the background mode;
+2. The program when you turn on (restart) the phone monitors the replacement of the sim card;
+3. In case of replacing the sim card, the phone will receive the latest location, provided that GPS is enabled on the device;
+4. Regardless of receiving the coordinates, the program will send a message to the selected number from the phone book;
+5. Interception and processing of the received message;
+6. The ability to view the coordinates of the intercepted message on the google map;
+
+---
+
+### Tools and Technology: ###
+- Google Map API
+- Location
+- Service
+- BroadcastReceiver
+- TelephonyManager
+- SmsManager
+- SmsMessage
+- SharedPreferences
+- NotificationCompat
+- RecyclerView
+- DataBase
+- ContactsContract
+

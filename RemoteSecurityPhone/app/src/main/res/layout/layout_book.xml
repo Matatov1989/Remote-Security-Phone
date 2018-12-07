@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_status_bar" />
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerContact"
         android:layout_width="match_parent"

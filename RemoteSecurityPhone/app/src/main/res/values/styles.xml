@@ -12,4 +12,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- to switch bullon -->
+    <style name="MySwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/colorBlueLight</item>
+    </style>
+
 </resources>

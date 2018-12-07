@@ -17,14 +17,13 @@ public class PrivacyPolicy extends AppCompatActivity {
         setContentView(R.layout.layout_privacy_policy);
 
         mWebView = (WebView) findViewById(R.id.webView);
-
-        mWebView.getSettings().setJavaScriptEnabled(true);  // turn on support JavaScript
+        mWebView.getSettings().setJavaScriptEnabled(true);                      // turn on support JavaScript
         mWebView.loadUrl("https://sites.google.com/view/rsp-privacy-policy");   // set url page
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(PrivacyPolicy.this, MainActivity11.class));
+        startActivity(new Intent(PrivacyPolicy.this, MainActivity.class));
     }
 }

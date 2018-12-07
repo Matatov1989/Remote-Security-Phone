@@ -2,6 +2,7 @@ package com.sergeant_matatov.remotesecurityphone.Adapters;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
@@ -12,8 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sergeant_matatov.remotesecurityphone.Activitys.MainActivity;
+import com.sergeant_matatov.remotesecurityphone.Activitys.PrivacyPolicy;
 import com.sergeant_matatov.remotesecurityphone.Database.ContactData;
 import com.sergeant_matatov.remotesecurityphone.R;
+import com.sergeant_matatov.remotesecurityphone.Services.ServiceSendMessage;
 
 import java.util.ArrayList;
 
@@ -65,7 +69,7 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
             saveContact(arrayListContact.get(getAdapterPosition()).getNameContact(), arrayListContact.get(getAdapterPosition()).getPhoneContact());
         }
 
-        //сохраняет контакт
+        //save a selected contact and send to selected contact message about programm and operation
         public void saveContact(String contactName, String contactPhone) {
 
             final String CALLER_NAME = "contact_name";
@@ -76,13 +80,14 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
             edit.putString(CALLER_NUMBER, contactPhone);
             edit.commit();
 
+            Intent intent = new Intent(context, ServiceSendMessage.class).putExtra("flagSecuritySMS", false);
+            context.startService(intent);
 
+            context.startActivity(new Intent(context, MainActivity.class));
         }
-
     }
 
-
-    //get contacts from phone-book
+    //get contacts from a phone book
     public ArrayList<ContactData> getContacts() {
         ArrayList<ContactData> contactListData = new ArrayList<ContactData>();
         //connect with contacts data, get id, name and number
@@ -110,18 +115,14 @@ public class ContactRecyclerAdapter extends RecyclerView.Adapter<ContactRecycler
                     Cursor phoneCursor = contentResolver.query(PhoneCONTENT_URI, null, Phone_CONTACT_ID + " = ?", new String[]{contact_id}, null);
                     //get his numbers
                     while (phoneCursor.moveToNext()) {
-             //           pers = name;
+                        //           pers = name;
                         phoneNumber = phoneCursor.getString(phoneCursor.getColumnIndex(NUMBER));
                         phoneNumber = phoneNumber.replace("-", "");
                         phoneNumber = phoneNumber.replace(" ", "");
                         int len = phoneNumber.length();
 
-                        if (len >= 7) {
+                        if (len >= 7)
                             contactListData.add(new ContactData(name, phoneNumber));
-                 //           pers += " " + phoneNumber;
-                 //           personList.add(pers);
-                 //           personList.add(pers);
-                        }
                     }
                 }
             }

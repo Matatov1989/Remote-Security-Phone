@@ -24,8 +24,6 @@ import com.sergeant_matatov.remotesecurityphone.R;
  */
 public class BookActivity extends AppCompatActivity {
 
-    final String LOG_TAG = "myLogs";
-
     ContactRecyclerAdapter contactRecyclerAdapter;
     RecyclerView recyclerContact;
 
@@ -50,25 +48,26 @@ public class BookActivity extends AppCompatActivity {
         startActivity(new Intent(BookActivity.this, MainActivity.class));
     }
 
+    //set list contacts from a phone book
     private void setListBook() {
-        Log.d(LOG_TAG, "setListBook");
         contactRecyclerAdapter = new ContactRecyclerAdapter(this);
         recyclerContact.setAdapter(contactRecyclerAdapter);
     }
 
+    //check permission on read a phone book
     private void checkPermissionReadBook() {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_CONTACTS)) {
                 dialogPermissionReadBook();
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_CONTACTS}, CODE_READ_BOOK);
-
             }
         } else {
             setListBook();
         }
     }
 
+    //dialog if user do not set permission on read a phone book
     private void dialogPermissionReadBook() {
         android.app.AlertDialog.Builder adb = new android.app.AlertDialog.Builder(this);
         adb.setCancelable(false);
@@ -82,7 +81,7 @@ public class BookActivity extends AppCompatActivity {
         adb.show();
     }
 
-    // @Override
+    @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case CODE_READ_BOOK: {

@@ -7,7 +7,6 @@
     android:background="@drawable/fon"
     tools:context=".Activitys.MainActivity">
 
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_map" />
+        android:backgroundTint="@color/colorBlueLight"
+        app:srcCompat="@drawable/ic_location_on" />
 
 </android.support.design.widget.CoordinatorLayout>

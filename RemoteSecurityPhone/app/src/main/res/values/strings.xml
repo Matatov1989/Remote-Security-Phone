@@ -1,151 +1,43 @@
 <resources>
     <string name="app_name">RSP</string>
-    <string name="developers">Developers</string>
-    <string name="develop1">Developer Zdornov Anton</string>
-    <string name="develop2">Developer Matatov Yury</string>
-    <string name="painter">Painter Matatov Nikita</string>
+
     <string name="btnOK">OK</string>
-    <string name="security">Security</string>
-    <string name="sendOn">Commands</string>
-    <string name="passText">Your password: </string>
-    <string name="friendText">Your friend: </string>
-    <string name="questionText">Choose security question:</string>
-    <string name="question1">1.Your favorite place?</string>
-    <string name="question2">2.What is your favorite car?</string>
-    <string name="question3">3.What is your favorite drink (meal)?</string>
-    <string name="question4">4.Your mothers maiden name?</string>
-    <string name="btnUpdatePass">Change password</string>
-    <string name="btnRandPass">Random Password</string>
-    <string name="btnChangeContact">Change a contact</string>
-    <string name="btnBook">Phone book</string>
-    <string name="question">Your security question:</string>
-    <string name="hintPass">enter password</string>
-    <string name="hintEmail">Write a message ...</string>
-    <string name="hintFriend">Write the phone number</string>
-    <string name="hintAnswer">Enter the answer...</string>
-    <string name="btnSave">Save</string>
-    <string name="titleSendOn">Commands:</string>
-    <string name="commSoundOn">turn on the sound</string>
-    <string name="commGPSOn">locate phone</string>
-    <string name="commNotifOn">enable notifications</string>
-    <string name="commBattery">check the status of the battery</string>
-    <string name="commNotifOff">disable notifications</string>
-    <string name="commMyQuestion">forgot password?</string>
-    <string name="hintPassContact">Enter the recipient s password</string>
-    <string name="btnSendComm">Send command</string>
-    <string name="btnSendMail">Send</string>
-    <string name="titleInstr">Instructions</string>
-    <string name="titleLocal">Location</string>
-    <string name="titleLocalNew">New Location</string>
     <string name="btnCancel">Cancel</string>
-    <string name="toastSavePass">Password saved</string>
-    <string name="dialogTitleInst">Welcome.</string>
-    <string name="dialogStartInst">Welcome to the Remote Service to protect your phone.  Run the application, you need to: select a contact who will receive SMS message when your device have had changed the SIM-card, just type the password from unauthorized access to your phone and answer a security question in case you forget your password.</string>
-    <string name="toastIfPass">The password must be from 4 to 8 characters!</string>
-    <string name="toastQuestionAnswer">Security question and answer are stored.</string>
-    <string name="error_intro">"Please "</string>
-    <string name="error_blank_phoneNo">" enter a Phone "</string>
-    <string name="error_blank_password">"enter a Password "</string>
-    <string name="error_blank_command">"select a Command "</string>
-    <string name="error_join">", and "</string>
-    <string name="error_end">.</string>
-    <string name="checkSend">SMS sent</string>
-    <string name="checkGeneric">Generic failure</string>
-    <string name="checkService">No service</string>
-    <string name="checkPDU">Null PDU</string>
-    <string name="checkRadio">Radio off</string>
-    <string name="checkDeliveredOn">SMS delivered</string>
-    <string name="checkDeliveredOff">SMS not delivered</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="smsFirst">I chose you for the Remote Security Phone software as the recipient of the notice of the theft of my phone. Thank you.</string>
-    <string name="smsNewSim">On your phone, your friend changed the sim card. Contact them and find out what has happened. \"Remote Security Phone\"</string>
-    <string name="smsBattery">The battery level is </string>
-    <string name="smsAnswer">Your password:</string>
-    <string name="smsQuestion">Your question:</string>
-    <string name="smsBatt15">Low battery! The remaining 15%</string>
-    <string name="smsBatt10">Low battery! The remaining 10%! The service automatically turned off!</string>
-    <string name="btnCancelePass">Enter the password to start the service!</string>
-    <string name="titleGeneralInstr">General Instruction</string>
-
-    <string name="titleNewPass">New Password</string>
-    <string name="btnSettingGPS">Data Sources GPS</string>
-    <string name="toastEnterQuestionAnswer">Select a security question and answer to it.</string>
-    <string name="toastEnterQuestion">You forgot to select a security question.</string>
-    <string name="toastEnterAnswer">You have not written answer to the security question selected.</string>
-    <string name="textForBook"> Or choose from list of your contacts </string>
-    <string name="smsProvaiders">GPS and NETWORK providers are turned off.</string>
-    <string name="smsProvaidersGpsOrNet">provider is not currently available. Try later.</string>
-
-    <string name="titleDialogUrgently">Urgently!</string>
-    <string name="dialogUrgentlyCall">Call the following number: </string>
-    <string name="toastSendMail">Sending letter...</string>
-    <string name="smsQuestionInst">A write to the brackets!</string>
-
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-
-    <string name="navBtnPass">Password</string>
-    <string name="navBtnContact">Contacts</string>
-    <string name="navBtnQuestion">Security Question</string>
-    <string name="navBtnAdvise">Advise a friend</string>
-
-    <string name="strSingNum">№</string>
-    <string name="btnTextPrivacyPolicy"><u>Privacy Policy</u></string>
-
-    <string name="navDrawerItemCommunication">Communication</string>
-
-    <string name="dialogPermissionSMS">The program uses the function of sending sms-messages. It is necessary to manually sending sms commands from the program to automatically send sms messages sim card is replaced, and automatically send sms messages with the coordinates of the location of the phone if the phone will take a team of determining the location of the phone. For sending sms-messages may apply. Details can be obtained from your mobile operator.</string>
-    <string name="dialogPermissionContact">The program uses the phone book data, so that you would select a contact as a recipient of the sim card is replaced messages on your phone. As these data are necessary for the convenience of the administration team sms with the program. Phonebook data are only available to you and will not be transmitted.</string>
-    <string name="dialogPermissionCall">The program uses the function call number. This is necessary if the phone sms will command the inclusion of the notice. This appears from which you can call the sender sms command dialog box. For the implementation of the call may be charged. Details can be obtained from your mobile operator.</string>
-    <string name="dialogPermissionLocation">The program uses the function of determining the location of the device. It is necessary to determine the location when the device sim card is replaced, and when receiving the appropriate command sms. For the determination of the location of the phone may incur additional fees. Details can be obtained from your mobile operator.</string>
-
-
-
-
-
-    <string name="strGeneralInstr">
-        \t\t\tRSP program is intended for remote control and protect your phone against loss or theft by sending sms messages relevant (command).\n\n
-        Functions of the program:\n
-        \t\t1. The program works in the background;\n
-        \t\t2. Program at startup (restart) the phone keeps track replacement sim - card. If a replacement sim has been made on the phone - card, your contact that you have chosen as an extra protection, get a message with the last coordinates of the phone;\n
-        \t\t3. Remotely turn the sound;\n
-        \t\t4. Remote Locate Phone (include GPS);\n
-        \t\t5. Remotely check the status of the battery;\n
-        \t\t6. Remotely enable notification (playing music, running vibration, display and output to the appropriate message screen);\n
-        \t\t7. Remotely turn off the notification;\n
-        \t\t8. Viewing the received coordinates on google map;\n9. Administration of ready commands to the program.\n\n
-        Note:\n
-        \t\t1. For those who do not have the program and you will get a message: <b>\"Coordinates-xx.xxxxxxx, xx.xxxxxxx-x.xkm/h-gps(or network)-\"</b>, copy the two long numbers and insert them in the Google maps on the spot <u>\"on the Google search maps\"</u>. The number that stands in front of <b>\"km/h\"</b> shows how the speed of the machine is moving. The word that comes after <b>\"km/h\"</b> (<b>gps</b> or <b>network</b>) indicates the type of positioning device.\n
-        \t\t\t\tgps - this is the exact positioning by satellite;\n
-        \t\t\t\tnetwork - positioning through the mobile operator or the Wi-Fi network.\n
-        \t\t2. The command dial can be manually and send via normal sms manager. The message must consist of a password in order to whom you send the command from the command itself. For example: <b>\"1234-onSound-\"</b>, in <u>1234</u> - is the password, <u>onSound-</u> - a team.\n
-        Teams:\n
-        \t\t\tonSound- - turn the sound;\n
-        \t\t\tonGPS- - include GPS;\n
-        \t\t\tonNotif- - enable notifications;\n
-        \t\t\toffNotif- - turn off the notification;\n
-        \t\t\tonBattery- - check the status of the battery.\n
-        \t\t3. In order for your phone to react to the <u>\"find out the location of the phone\"</u>, be sure about the included \"source of data on the location\" in \"Service position\". Turn on or \"the GPS satellites\" or \"location on the network\";\n
-        \t\t4. Try to remember your own password. In the case of blackouts, send the following sms message: <b>\"My Question\"</b>, and wait for the security question that you selected, and then type your answer to the security question in parenthesis and send. If the answer is correct, you will receive your forgotten password.\n\n
-        Use of health.\n</string>
-
-
-
-
-
-
-    <string name="title_activity_layout_main">LayoutMainActivity</string>
-
-    <string name="text_manual">Вас приветствует служба Дистанционной защиты вашего телефона. Для запуска приложения, Вам необходимо выбрать контакт, который будет получать SMS сообщения в случае, пропажи Вашего устройства с последующей заменой SIM-карты. Примечание! Программа не сработает если злоумышленник перед заменой SIM-карты отформатирует телефон или просто удалит программу.</string>
-    <string name="textPrivacyPolicy">Privacy Policy</string>
-    <string name="textVersion">Version 3.6</string>
     <string name="btnChooseContact">choose\na contact</string>
     <string name="btnSwitch">start a programm</string>
 
-    <string name="textSMSnewSimWithLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты телефона: %1$s, %2$S</string>
-    <string name="textSMSnewSimWithoutLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты отсуствуют.</string>
+    <string name="titleActivityMaps">Map</string>
+    <string name="titleActivityBook">Contacts</string>
 
+    <string name="actionBtnInstructions">Instructions</string>
+    <string name="actionBtnDevelopers">Developers</string>
+    <string name="actionBtnFromDeveloper">More from developer</string>
+    <string name="actionBtnAdviseFriend">Advise a friend</string>
+    <string name="actionBtnFeedback">Feedback</string>
+
+    <array name="arrWorkers">
+        <item>Developer Matatov Yury</item>
+        <item>Painter Matatov Nikita</item>
+    </array>
+
+    <string name="toastSendMail">Message sent.</string>
+
+    <string name="textSMSnewSimWithLocal">On the device of your friend changed the sim card. Contact him and find out what\'s wrong. Phone coordinates: [%1$s, %2$s]. RSP</string>
+    <string name="textSMSnewSimWithoutLocal">On the device of your friend changed the sim card. Contact him and find out what\'s wrong. Phone coordinates absent. RSP</string>
+    <string name="textSMSFirst">I chose you for the Remote Security Phone program as a recipient of notifications for replacing a sim card with my phone. Thanks.</string>
+
+    <string name="dialogPermissionSMS">Permission to send sms messages is necessary to automatically alert the selected contact about the replacement of the sim card. For sending sms messages may be charged. You can get the details from your mobile operator.</string>
+    <string name="dialogPermissionContact">Contact permission is necessary to select a contact as the recipient of the notification about the replacement of a sim card. Do not worry, the phone book data is available only to the user of the program.</string>
+    <string name="dialogPermissionPhoneState">Permission to manage phone calls is necessary to determine the replacement of a sim card. Do not worry, all telephone data is available only to the user of the program.</string>
+    <string name="dialogPermissionLocation">Permission to the location of the device is necessary to determine the coordinates of the device when replacing the sim card and will sending notification in the form of sms on the selected contact.</string>
+
+    <string name="textNeedChooseContact">For the program to work correctly, you must select a contact who will receive a notification if the card is replaced. It is desirable that this was a person whom you trust!</string>
+    <string name="textInstructions">Welcome to the Remote Protection service of your phone. To start the application, you need to select a contact that will receive SMS messages in the event that your device is lost and the SIM card is replaced. Note! The program will not work if the attacker formats the phone before replacing the SIM card or simply deletes the program.</string>
+    <string name="textPrivacyPolicy">Privacy Policy</string>
+    <string name="titleMarkerMap">Your device</string>
+    <string name="textChooseContact">Contact receiving notification:\n%1$s</string>
+    <string name="textNotChooseContact">not selected</string>
+    <string name="textNotification">Click to see location device.</string>
+    <string name="textVersion">Version 4.0</string>
 
 </resources>

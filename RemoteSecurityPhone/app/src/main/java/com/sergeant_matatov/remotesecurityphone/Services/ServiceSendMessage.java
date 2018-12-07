@@ -3,6 +3,7 @@ package com.sergeant_matatov.remotesecurityphone.Services;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -12,9 +13,6 @@ import com.sergeant_matatov.remotesecurityphone.R;
 import java.util.ArrayList;
 
 public class ServiceSendMessage extends Service {
-
-    final String LOG_TAG = "myLogs";
-
 
     public ServiceSendMessage() {
     }
@@ -27,25 +25,29 @@ public class ServiceSendMessage extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        //    Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
-        Log.d(LOG_TAG, " ***SEND***");
 
+        //get phone number from selected contact
+        final String CALLER_NUMBER = "contact_number";
+        SharedPreferences personPref = getSharedPreferences("rsp_contact", MODE_PRIVATE);
+        String phoneNumber = personPref.getString(CALLER_NUMBER, "");
 
-        //      intent = Intent.getIntent();
-
-        Log.d(LOG_TAG, " SEND lat "+ intent.getDoubleExtra("lat", 0.0));
-        Log.d(LOG_TAG, " SEND lon "+ intent.getDoubleExtra("lon", 0.0));
+        //get type a message and location
+        boolean flag = intent.getBooleanExtra("flagSecuritySMS", false);
         double lat = intent.getDoubleExtra("lat", 0.0);
         double lon = intent.getDoubleExtra("lon", 0.0);
 
         String message = "";
-        if (lat == 0.0 && lon == 0.0)
-            message = getString(R.string.textSMSnewSimWithoutLocal);
-        else
-            message = getString(R.string.textSMSnewSimWithLocal, ""+lat, ""+lon);
+        //if true, get text about changet a sim card
+        //and if has location, get text with location.
+        if (flag) {
+            if (lat == 0.0 && lon == 0.0)
+                message = getString(R.string.textSMSnewSimWithoutLocal);
+            else
+                message = getString(R.string.textSMSnewSimWithLocal, "" + lat, "" + lon);
+        } else
+            message = getString(R.string.textSMSFirst);
 
-        Log.d(LOG_TAG, " SEND message "+ message);
-
+        //send sms message
         SmsManager sms = SmsManager.getDefault();
         ArrayList<String> al_message = new ArrayList<String>();
         al_message = sms.divideMessage(message);
@@ -59,7 +61,7 @@ public class ServiceSendMessage extends Service {
             PendingIntent pi_delivered = PendingIntent.getBroadcast(this, i, deliveredIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             al_piDelivered.add(pi_delivered);
         }
-        sms.sendMultipartTextMessage("0526461150", null, al_message, al_piSent, al_piDelivered);
+        sms.sendMultipartTextMessage(phoneNumber, null, al_message, al_piSent, al_piDelivered);
 
         stopSelf();
         // If we get killed, after returning from here, restart
@@ -68,7 +70,6 @@ public class ServiceSendMessage extends Service {
 
     @Override
     public void onDestroy() {
-        Log.d(LOG_TAG, " stop SEND");
-        //   Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+
     }
 }

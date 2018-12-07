@@ -29,45 +29,34 @@ import java.util.concurrent.Executor;
 
 public class ServiceGetLocation extends Service {
 
-    final String LOG_TAG = "myLogs";
     Location locationDevice;
     private FusedLocationProviderClient mFusedLocationClient;
 
     public ServiceGetLocation() {
     }
 
-
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        //    throw new UnsupportedOperationException("Not yet implemented");
-        //      Toast.makeText(this, "service onBind", Toast.LENGTH_SHORT).show();
         return null;
     }
-
-
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.d(LOG_TAG, " *****start***** ");
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             //       return;
         }
-
         mFusedLocationClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(final Location location) {
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
-                    Log.d(LOG_TAG, " if  ");
                     // Logic to handle location object
                     locationDevice = location;
                     stopSelf();
                 } else {
-                    Log.d(LOG_TAG, " else  ");
                     stopSelf();
                 }
             }
@@ -77,7 +66,9 @@ public class ServiceGetLocation extends Service {
 
     @Override
     public void onDestroy() {
+        //send message to selected contact about changet sim card with or without location phone
         Intent intent = new Intent(this, ServiceSendMessage.class)
+                .putExtra("flagSecuritySMS", true)
                 .putExtra("lat", (locationDevice != null ? locationDevice.getLatitude() : 0.0))
                 .putExtra("lon", (locationDevice != null ? locationDevice.getLongitude() : 0.0));
         startService(intent);

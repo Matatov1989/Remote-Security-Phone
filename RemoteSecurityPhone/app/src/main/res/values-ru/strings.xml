@@ -22,7 +22,7 @@
 
     <string name="toastSendMail">Сообщение отправлено.</string>
 
-    <string name="textSMSnewSimWithLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координаты телефона: [%1$s, %2$s]. RSP</string>
+    <string name="textSMSnewSimWithLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координаты: https://www.google.com/maps/search/?api=1&amp;query=%1$s,%2$s. RSP</string>
     <string name="textSMSnewSimWithoutLocal">На телефоне Вашего друга поменяли sim карту. Свяжитесь с ним и выясните в чем дело. Координыты отсуствуют. RSP</string>
     <string name="textSMSFirst">Я выбрал/а тебя для программы Remote Security Phone в качестве получателя уведомления о замене sim карты на моём телефоне. Спасибо.</string>
 
@@ -38,6 +38,6 @@
     <string name="textChooseContact">Контакт получающий уведомление:\n<b>%1$s</b></string>
     <string name="textNotChooseContact">не выбран</string>
     <string name="textNotification">Нажмите для просмотра координат</string>
-    <string name="textVersion">Версия 4.0</string>
+    <string name="textVersion">Версия 4.1</string>
 
 </resources>

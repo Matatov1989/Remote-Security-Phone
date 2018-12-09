@@ -40,17 +40,18 @@ public class ServiceInterceptSMS extends BroadcastReceiver {
             }
 
             //filter all messages
-            if (!textControl.equals(textMessage) && textMessage.contains("RSP")) {
+            if (textMessage.contains("query") && textMessage.contains("RSP")) {
 
-                int indexStart = textMessage.indexOf('[');
-                int indexStop = textMessage.indexOf(']');
+                int indexStart = textMessage.indexOf("query=") + 6;
+                textMessage = textMessage.substring(indexStart);
 
-                char[] buf = new char[(indexStop - 0) - (indexStart + 1)];
-                textMessage.getChars((indexStart + 1), indexStop, buf, 0);
-                String textLocation = new String(buf);
-                textLocation = textLocation.replace(",", "");
+                indexStart = 0;
+                int indexStop = textMessage.length() - 5;
+                textMessage = textMessage.substring(indexStart, indexStop);
+                textMessage = textMessage.replace(",", " ");
+
                 String[] tempLocal = new String[2];
-                tempLocal = textLocation.split(" ");
+                tempLocal = textMessage.split(" ");
                 String strLat = tempLocal[0];
                 String strLon = tempLocal[1];
 

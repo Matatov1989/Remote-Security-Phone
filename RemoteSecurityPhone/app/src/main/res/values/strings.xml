@@ -22,7 +22,7 @@
 
     <string name="toastSendMail">Message sent.</string>
 
-    <string name="textSMSnewSimWithLocal">On the device of your friend changed the sim card. Contact him and find out what\'s wrong. Phone coordinates: [%1$s, %2$s]. RSP</string>
+    <string name="textSMSnewSimWithLocal">On the device of your friend changed the sim card. Contact him and find out what\'s wrong. Coordinates: https://www.google.com/maps/search/?api=1&amp;query=%1$s,%2$s. RSP</string>
     <string name="textSMSnewSimWithoutLocal">On the device of your friend changed the sim card. Contact him and find out what\'s wrong. Phone coordinates absent. RSP</string>
     <string name="textSMSFirst">I chose you for the Remote Security Phone program as a recipient of notifications for replacing a sim card with my phone. Thanks.</string>
 
@@ -38,6 +38,6 @@
     <string name="textChooseContact">Contact receiving notification:\n%1$s</string>
     <string name="textNotChooseContact">not selected</string>
     <string name="textNotification">Click to see location device.</string>
-    <string name="textVersion">Version 4.0</string>
+    <string name="textVersion">Version 4.1</string>
 
 </resources>

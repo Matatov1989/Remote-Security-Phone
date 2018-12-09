@@ -69,15 +69,16 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (switchStartProgramm.isChecked()) {
                     SharedPreferences sharedPrefs = getSharedPreferences("rsp_contact", MODE_PRIVATE);
-                    if (sharedPrefs.getString("contact_name", "").isEmpty())
+                    if (sharedPrefs.getString("contact_name", "").isEmpty()) {
                         dialogChooseContact();
+                        switchStartProgramm.setChecked(false);
+                    }
                     else {
                         SharedPreferences.Editor editor = getSharedPreferences("rsp_contact", MODE_PRIVATE).edit();
                         editor.putBoolean("switch_button_job", true);
                         editor.commit();
                         checkPermissionPhoneState();
                     }
-
                 } else {
                     SharedPreferences.Editor editor = getSharedPreferences("rsp_contact", MODE_PRIVATE).edit();
                     editor.putBoolean("switch_button_job", false);
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //open a book with contacts
-    private void onClickBook(View view) {
+    public void onClickBook(View view) {
         startActivity(new Intent(this, BookActivity.class));
     }
 

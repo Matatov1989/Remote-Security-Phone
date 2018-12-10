@@ -38,6 +38,6 @@
     <string name="textChooseContact">Contact receiving notification:\n%1$s</string>
     <string name="textNotChooseContact">not selected</string>
     <string name="textNotification">Click to see location device.</string>
-    <string name="textVersion">Version 4.1</string>
+    <string name="textVersion">Version 4.2</string>
 
 </resources>

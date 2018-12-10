@@ -40,12 +40,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(getString(R.string.titleMarkerMap)).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_phone_iphone)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(getString(R.string.titleMarkerMap)).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_phone_android)));
 
         //view map
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(latitude, longitude))        //point
-                .zoom(15)                                       //zoom
+                .zoom(15.5f)                                       //zoom
                 .bearing(45)                                    //card rotation
                 .tilt(20)                                       //tilt angle
                 .build();

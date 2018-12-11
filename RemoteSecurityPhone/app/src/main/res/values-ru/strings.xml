@@ -17,7 +17,7 @@
 
     <array name="arrWorkers">
         <item>Разработчик Мататов Юрий</item>
-        <item>Художник Мататов Никита</item>
+        <item>Дизайнер Мататов Никита</item>
     </array>
 
     <string name="toastSendMail">Сообщение отправлено.</string>
@@ -38,6 +38,6 @@
     <string name="textChooseContact">Контакт получающий уведомление:\n<b>%1$s</b></string>
     <string name="textNotChooseContact">не выбран</string>
     <string name="textNotification">Нажмите для просмотра координат</string>
-    <string name="textVersion">Версия 4.2</string>
+    <string name="textVersion">Версия 4.3</string>
 
 </resources>

@@ -57,13 +57,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //get Latitude
     public String loadLat() {
         SharedPreferences latPref = getSharedPreferences("rsp_contact", MODE_PRIVATE);
-        return latPref.getString("save_location_latitude", "33.005790");
+        return latPref.getString("save_location_latitude", "33.007663110811215");
     }
 
     //get Longitude
     public String loadLon() {
         SharedPreferences lonPref = getSharedPreferences("rsp_contact", MODE_PRIVATE);
-        return lonPref.getString("save_location_longitude", "35.099440");
+        return lonPref.getString("save_location_longitude", "35.1011876271966");
     }
 
     @Override

@@ -8,8 +8,8 @@ android {
         applicationId "com.sergeant_matatov.remotesecurityphone"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 23
-        versionName "4.2"
+        versionCode 24
+        versionName "4.3"
     }
     buildTypes {
         release {

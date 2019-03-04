@@ -1,5 +1,6 @@
 package com.sergeant_matatov.remotesecurityphone.Activitys;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,17 +30,17 @@ import java.util.List;
 import static java.lang.System.exit;
 
 public class MainActivity extends AppCompatActivity {
-    //   final String LOG_TAG = "myLogs";
+       final String LOG_TAG = "myLogs";
     TextView textPolicy;
     TextView textChooseContact;
     Switch switchStartProgramm;
 
     public static final int CODE_READ_PHONE_STATE = 1; // code you want.
+    public static final int CODE_READ_PHONE_STATE_TEST = 3; // code you want.
 
     public static final int MULTIPLE_PERMISSIONS = 2; // code you want.
 
     String[] PERMISSIONS = new String[]{
-            android.Manifest.permission.SEND_SMS,
             android.Manifest.permission.ACCESS_FINE_LOCATION,
     };
 
@@ -100,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+     //           startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                checkPermissionPhoneStateTest();
             }
         });
     }
@@ -138,6 +140,41 @@ public class MainActivity extends AppCompatActivity {
         if (!listPermissionsNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MULTIPLE_PERMISSIONS);
             //         return false;
+        }
+    }
+
+    private void checkPermissionPhoneStateTest() {
+        Log.d(LOG_TAG, "onCreate rrr" );
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED) {
+            Log.d(LOG_TAG, "onCreate rrr1" );
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_PHONE_NUMBERS)) {
+                Log.d(LOG_TAG, "onCreate rrr21" );
+                dialogPermissionPhoneState();
+            } else {
+                // No explanation needed; request the permission
+                Log.d(LOG_TAG, "onCreate rrr22" );
+
+                TelephonyManager telephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+
+                String newSIM = telephonyMgr.getSimSerialNumber();
+                Log.d(LOG_TAG, "onCreate " +telephonyMgr.getLine1Number());
+                Log.d(LOG_TAG, "onCreate " +telephonyMgr.getSimSerialNumber());
+                Log.d(LOG_TAG, "onCreate " +telephonyMgr.getSubscriberId());
+
+
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_PHONE_NUMBERS}, CODE_READ_PHONE_STATE_TEST);
+            }
+        } else {
+            TelephonyManager telephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+
+            String newSIM = telephonyMgr.getSimSerialNumber();
+            Log.d(LOG_TAG, "onCreate " +telephonyMgr.getLine1Number());
+            Log.d(LOG_TAG, "onCreate " +telephonyMgr.getSimSerialNumber());
+            Log.d(LOG_TAG, "onCreate " +telephonyMgr.getSubscriberId());
+
+
         }
     }
 

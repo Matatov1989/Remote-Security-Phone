@@ -24,7 +24,7 @@ public class ServiceInterceptSMS extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
+/*
         String textControl = context.getString(R.string.textSMSnewSimWithoutLocal);
         //Intercept SMS
         Bundle bundle = intent.getExtras();
@@ -80,5 +80,6 @@ public class ServiceInterceptSMS extends BroadcastReceiver {
                 notificationManager.notify(101, mBuilder.build());
             }
         }
+        */
     }
 }

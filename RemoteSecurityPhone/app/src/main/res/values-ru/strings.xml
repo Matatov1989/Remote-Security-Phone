@@ -38,6 +38,6 @@
     <string name="textChooseContact">Контакт получающий уведомление:\n<b>%1$s</b></string>
     <string name="textNotChooseContact">не выбран</string>
     <string name="textNotification">Нажмите для просмотра координат</string>
-    <string name="textVersion">Версия 4.3</string>
+    <string name="textVersion">Версия 4.3 final</string>
 
 </resources>

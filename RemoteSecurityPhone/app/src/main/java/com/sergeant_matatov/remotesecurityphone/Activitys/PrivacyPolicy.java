@@ -24,6 +24,6 @@ public class PrivacyPolicy extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(PrivacyPolicy.this, MainActivity.class));
+ //       startActivity(new Intent(PrivacyPolicy.this, MainActivity.class));
     }
 }
